@@ -1,0 +1,6 @@
+Dependencies for Project 'LED_Feng', Target 'Target 1': (DO NOT MODIFY !)
+CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
+F (.\main.c)(0x66D9DD77)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections-Id:\CodeIDE\Keil_v5\Keil\STM32F1xx_DFP\2.3.0\Device\Include-Id:\CodeIDE\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="533" -DSTM32F10X_HD-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (stm32f10x.h)(0x66D9D4B7)
+F (.\startup_stm32f10x_hd.s)(0x662A5C9D)(--cpu Cortex-M3 -g --apcs=interwork --pd "__MICROLIB SETA 1"-Id:\CodeIDE\Keil_v5\Keil\STM32F1xx_DFP\2.3.0\Device\Include-Id:\CodeIDE\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 533" --pd "STM32F10X_HD SETA 1"--list .\listings\startup_stm32f10x_hd.lst --xref -o .\objects\startup_stm32f10x_hd.o --depend .\objects\startup_stm32f10x_hd.d)
+F (.\stm32f10x.h)(0x66D9D4B7)()
