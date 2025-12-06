@@ -1,0 +1,193 @@
+
+========================================================================
+
+** ELF Header Information
+
+    File Name: Objects\feng_led.axf
+
+    Machine class: ELFCLASS32 (32-bit)
+    Data encoding: ELFDATA2LSB (Little endian)
+    Header version: EV_CURRENT (Current version)
+    Operating System ABI: none
+    ABI Version: 0
+    File Type: ET_EXEC (Executable) (2)
+    Machine: EM_ARM (ARM)
+
+    Image Entry point: Not specified
+    Flags: EF_ARM_ABI_FLOAT_SOFT (0x05000200)
+
+    ARM ELF revision: 5 (ABI version 2)
+
+    Conforms to Soft float procedure-call standard
+
+    Built with
+    Component: ARM Compiler 5.06 update 7 (build 960) Tool: armasm [4d35fa]
+    Component: ARM Compiler 5.06 update 7 (build 960) Tool: armlink [4d3601]
+
+    Header size: 52 bytes (0x34)
+    Program header entry size: 32 bytes (0x20)
+    Section header entry size: 40 bytes (0x28)
+
+    Program header entries: 1
+    Section header entries: 13
+
+    Program header offset: 4676 (0x00001244)
+    Section header offset: 4708 (0x00001264)
+
+    Section header string table index: 12
+
+========================================================================
+
+** Program header #0 (PT_LOAD) [PF_X + PF_R]
+    Size : 224 bytes
+    Virtual address: 0x08000000 (Alignment 4)
+
+
+========================================================================
+
+** Section #1 'ER_IROM1' (SHT_PROGBITS) [SHF_ALLOC + SHF_EXECINSTR]
+    Size   : 224 bytes (alignment 4)
+    Address: 0x08000000
+
+    $d.realdata
+    RESET
+    __Vectors
+        0x08000000:    00000000    ....    DCD    0
+        0x08000004:    08000009    ....    DCD    134217737
+    $t
+    .text
+    Reset_Handler
+        0x08000008:    480e        .H      LDR      r0,[pc,#56] ; [0x8000044] = 0x40021018
+        0x0800000a:    6801        .h      LDR      r1,[r0,#0]
+        0x0800000c:    f0410108    A...    ORR      r1,r1,#8
+        0x08000010:    6001        .`      STR      r1,[r0,#0]
+        0x08000012:    480d        .H      LDR      r0,[pc,#52] ; [0x8000048] = 0x40010c00
+        0x08000014:    6801        .h      LDR      r1,[r0,#0]
+        0x08000016:    f0410101    A...    ORR      r1,r1,#1
+        0x0800001a:    6001        .`      STR      r1,[r0,#0]
+        0x0800001c:    480b        .H      LDR      r0,[pc,#44] ; [0x800004c] = 0x40010c0c
+        0x0800001e:    6801        .h      LDR      r1,[r0,#0]
+        0x08000020:    f0410101    A...    ORR      r1,r1,#1
+        0x08000024:    6001        .`      STR      r1,[r0,#0]
+        0x08000026:    f000f808    ....    BL       0x800003a ; Reset_Handler + 50
+        0x0800002a:    4808        .H      LDR      r0,[pc,#32] ; [0x800004c] = 0x40010c0c
+        0x0800002c:    6801        .h      LDR      r1,[r0,#0]
+        0x0800002e:    f0210101    !...    BIC      r1,r1,#1
+        0x08000032:    6001        .`      STR      r1,[r0,#0]
+        0x08000034:    f000f801    ....    BL       0x800003a ; Reset_Handler + 50
+        0x08000038:    e7f0        ..      B        0x800001c ; Reset_Handler + 20
+        0x0800003a:    4805        .H      LDR      r0,[pc,#20] ; [0x8000050] = 0x30d40
+        0x0800003c:    3801        .8      SUBS     r0,#1
+        0x0800003e:    d1fd        ..      BNE      0x800003c ; Reset_Handler + 52
+        0x08000040:    4770        pG      BX       lr
+        0x08000042:    bf00        ..      NOP      
+    $d
+        0x08000044:    40021018    ...@    DCD    1073877016
+        0x08000048:    40010c00    ...@    DCD    1073810432
+        0x0800004c:    40010c0c    ...@    DCD    1073810444
+        0x08000050:    00030d40    @...    DCD    200000
+    $t
+    i.delay
+    delay
+        0x08000054:    bf00        ..      NOP      
+        0x08000056:    1e01        ..      SUBS     r1,r0,#0
+        0x08000058:    f1a00001    ....    SUB      r0,r0,#1
+        0x0800005c:    d1fb        ..      BNE      0x8000056 ; delay + 2
+        0x0800005e:    4770        pG      BX       lr
+    i.mymain
+    mymain
+        0x08000060:    4b1b        .K      LDR      r3,[pc,#108] ; [0x80000d0] = 0x40021018
+        0x08000062:    6818        .h      LDR      r0,[r3,#0]
+        0x08000064:    f0400008    @...    ORR      r0,r0,#8
+        0x08000068:    6018        .`      STR      r0,[r3,#0]
+        0x0800006a:    4b1a        .K      LDR      r3,[pc,#104] ; [0x80000d4] = 0x40010c00
+        0x0800006c:    491a        .I      LDR      r1,[pc,#104] ; [0x80000d8] = 0x100011
+        0x0800006e:    6818        .h      LDR      r0,[r3,#0]
+        0x08000070:    4308        .C      ORRS     r0,r0,r1
+        0x08000072:    6018        .`      STR      r0,[r3,#0]
+        0x08000074:    4b17        .K      LDR      r3,[pc,#92] ; [0x80000d4] = 0x40010c00
+        0x08000076:    330c        .3      ADDS     r3,r3,#0xc
+        0x08000078:    e029        ).      B        0x80000ce ; mymain + 110
+        0x0800007a:    6818        .h      LDR      r0,[r3,#0]
+        0x0800007c:    f0400001    @...    ORR      r0,r0,#1
+        0x08000080:    6018        .`      STR      r0,[r3,#0]
+        0x08000082:    4816        .H      LDR      r0,[pc,#88] ; [0x80000dc] = 0xf4240
+        0x08000084:    f7ffffe6    ....    BL       delay ; 0x8000054
+        0x08000088:    6818        .h      LDR      r0,[r3,#0]
+        0x0800008a:    f0200001     ...    BIC      r0,r0,#1
+        0x0800008e:    6018        .`      STR      r0,[r3,#0]
+        0x08000090:    4812        .H      LDR      r0,[pc,#72] ; [0x80000dc] = 0xf4240
+        0x08000092:    f7ffffdf    ....    BL       delay ; 0x8000054
+        0x08000096:    6818        .h      LDR      r0,[r3,#0]
+        0x08000098:    f0400010    @...    ORR      r0,r0,#0x10
+        0x0800009c:    6018        .`      STR      r0,[r3,#0]
+        0x0800009e:    480f        .H      LDR      r0,[pc,#60] ; [0x80000dc] = 0xf4240
+        0x080000a0:    f7ffffd8    ....    BL       delay ; 0x8000054
+        0x080000a4:    6818        .h      LDR      r0,[r3,#0]
+        0x080000a6:    f0200010     ...    BIC      r0,r0,#0x10
+        0x080000aa:    6018        .`      STR      r0,[r3,#0]
+        0x080000ac:    480b        .H      LDR      r0,[pc,#44] ; [0x80000dc] = 0xf4240
+        0x080000ae:    f7ffffd1    ....    BL       delay ; 0x8000054
+        0x080000b2:    6818        .h      LDR      r0,[r3,#0]
+        0x080000b4:    f0400020    @. .    ORR      r0,r0,#0x20
+        0x080000b8:    6018        .`      STR      r0,[r3,#0]
+        0x080000ba:    4808        .H      LDR      r0,[pc,#32] ; [0x80000dc] = 0xf4240
+        0x080000bc:    f7ffffca    ....    BL       delay ; 0x8000054
+        0x080000c0:    6818        .h      LDR      r0,[r3,#0]
+        0x080000c2:    f0200020     . .    BIC      r0,r0,#0x20
+        0x080000c6:    6018        .`      STR      r0,[r3,#0]
+        0x080000c8:    4804        .H      LDR      r0,[pc,#16] ; [0x80000dc] = 0xf4240
+        0x080000ca:    f7ffffc3    ....    BL       delay ; 0x8000054
+        0x080000ce:    e7d4        ..      B        0x800007a ; mymain + 26
+    $d
+        0x080000d0:    40021018    ...@    DCD    1073877016
+        0x080000d4:    40010c00    ...@    DCD    1073810432
+        0x080000d8:    00100011    ....    DCD    1048593
+        0x080000dc:    000f4240    @B..    DCD    1000000
+
+** Section #2 '.debug_abbrev' (SHT_PROGBITS)
+    Size   : 1476 bytes
+
+
+** Section #3 '.debug_frame' (SHT_PROGBITS)
+    Size   : 208 bytes
+
+
+** Section #4 '.debug_info' (SHT_PROGBITS)
+    Size   : 580 bytes
+
+
+** Section #5 '.debug_line' (SHT_PROGBITS)
+    Size   : 276 bytes
+
+
+** Section #6 '.debug_loc' (SHT_PROGBITS)
+    Size   : 60 bytes
+
+
+** Section #7 '.debug_pubnames' (SHT_PROGBITS)
+    Size   : 57 bytes
+
+
+** Section #8 '.symtab' (SHT_SYMTAB)
+    Size   : 272 bytes (alignment 4)
+    String table #9 '.strtab'
+    Last local symbol no. 11
+
+
+** Section #9 '.strtab' (SHT_STRTAB)
+    Size   : 252 bytes
+
+
+** Section #10 '.note' (SHT_NOTE)
+    Size   : 20 bytes (alignment 4)
+
+
+** Section #11 '.comment' (SHT_PROGBITS)
+    Size   : 1056 bytes
+
+
+** Section #12 '.shstrtab' (SHT_STRTAB)
+    Size   : 140 bytes
+
+

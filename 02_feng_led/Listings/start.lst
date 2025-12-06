@@ -1,0 +1,151 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         
+    2 00000000                 PRESERVE8
+    3 00000000                 THUMB
+    4 00000000         
+    5 00000000         
+    6 00000000         ; Vector Table Mapped to Address 0 at Reset
+    7 00000000                 AREA             RESET, DATA, READONLY
+    8 00000000                 EXPORT           __Vectors
+    9 00000000         
+   10 00000000 00000000 
+                       __Vectors
+                               DCD              0           ; Top of Stack
+   11 00000004 00000000        DCD              Reset_Handler ; Reset Handler
+   12 00000008         
+   13 00000008                 AREA             |.text|, CODE, READONLY
+   14 00000000         ; Reset handler
+   15 00000000         Reset_Handler
+                               PROC
+   16 00000000                 EXPORT           Reset_Handler  [WEAK]
+   17 00000000         
+   18 00000000         ;/* 使能GPIOB */
+   19 00000000 480E            LDR              r0, =0x40021000 + 0x18
+   20 00000002 6801            LDR              r1, [r0]
+   21 00000004 F041 0108       ORR              r1, r1,#(1<<3)
+   22 00000008 6001            STR              r1,[r0]
+   23 0000000A         
+   24 0000000A         ;/* 设置 pin mode ， 设置为 输出 引脚 */
+   25 0000000A 480D            LDR              r0, =(0x40010C00 + 0)
+   26 0000000C 6801            LDR              r1, [r0]
+   27 0000000E F041 0101       ORR              r1, r1,#(1<<0)
+   28 00000012 6001            STR              r1,[r0]
+   29 00000014         MainLoop
+   30 00000014         ; 地址为 PortB  ODR 寄存器
+   31 00000014 480B            LDR              r0, =(0x40010C00 + 0x0C)
+   32 00000016 6801            LDR              r1, [r0]
+   33 00000018 F041 0101       ORR              r1, r1,#(1<<0)
+   34 0000001C 6001            STR              r1,[r0]
+   35 0000001E F000 F808       BL               Delay
+   36 00000022         
+   37 00000022 4808            LDR              r0, =(0x40010C00 + 0x0C)
+   38 00000024 6801            LDR              r1, [r0]
+   39 00000026 F021 0101       BIC              r1, r1,#(1<<0)
+   40 0000002A 6001            STR              r1,[r0]
+   41 0000002C F000 F801       BL               Delay
+   42 00000030 E7F0            B                MainLoop
+   43 00000032         
+   44 00000032         Delay
+   45 00000032 4805            LDR              R0, =200000
+   46 00000034         DelayLoop
+   47 00000034 3801            SUBS             R0, #1
+   48 00000036 D1FD            BNE              DelayLoop
+   49 00000038 4770            BX               lr
+   50 0000003A BF00            NOP
+   51 0000003C         
+   52 0000003C                 ENDP
+   53 0000003C         
+   54 0000003C                 END
+              40021018 
+              40010C00 
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+              40010C0C 
+              00030D40 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
+ork --depend=.\objects\start.d -o.\objects\start.o -Id:\CodeIDE\Keil_v5\Keil\ST
+M32F1xx_DFP\2.3.0\Device\Include -Id:\CodeIDE\Keil_v5\ARM\CMSIS\Include --prede
+fine="__UVISION_VERSION SETA 533" --predefine="STM32F10X_HD SETA 1" --list=.\li
+stings\start.lst start.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 7 in file start.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 10 in file start.s
+   Uses
+      At line 8 in file start.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 13 in file start.s
+   Uses
+      None
+Comment: .text unused
+Delay 00000032
+
+Symbol: Delay
+   Definitions
+      At line 44 in file start.s
+   Uses
+      At line 35 in file start.s
+      At line 41 in file start.s
+
+DelayLoop 00000034
+
+Symbol: DelayLoop
+   Definitions
+      At line 46 in file start.s
+   Uses
+      At line 48 in file start.s
+Comment: DelayLoop used once
+MainLoop 00000014
+
+Symbol: MainLoop
+   Definitions
+      At line 29 in file start.s
+   Uses
+      At line 42 in file start.s
+Comment: MainLoop used once
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 15 in file start.s
+   Uses
+      At line 11 in file start.s
+      At line 16 in file start.s
+
+5 symbols
+341 symbols in table
