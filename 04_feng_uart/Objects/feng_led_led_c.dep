@@ -1,0 +1,10 @@
+Dependencies for Project 'feng_led', Target 'led_c': (DO NOT MODIFY !)
+CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARMCC
+F (.\main.c)(0x6935278F)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections-Id:\CodeIDE\Keil_v5\Keil\STM32F1xx_DFP\2.3.0\Device\Include-Id:\CodeIDE\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="533" -DSTM32F10X_HD-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (d:\CodeIDE\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5E8E2EB2)
+I (uart_bsp.h)(0x693525C5)
+I (d:\CodeIDE\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
+F (.\start.s)(0x69330DA1)(--cpu Cortex-M3 -g --apcs=interwork -Id:\CodeIDE\Keil_v5\Keil\STM32F1xx_DFP\2.3.0\Device\Include-Id:\CodeIDE\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 533" --pd "STM32F10X_HD SETA 1"--list .\listings\start.lst --xref -o .\objects\start.o --depend .\objects\start.d)
+F (.\uart_bsp.c)(0x6935260E)(-c --cpu Cortex-M3 -g -O0 --apcs=interwork --split_sections-Id:\CodeIDE\Keil_v5\Keil\STM32F1xx_DFP\2.3.0\Device\Include-Id:\CodeIDE\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="533" -DSTM32F10X_HD-o .\objects\uart_bsp.o --omf_browse .\objects\uart_bsp.crf --depend .\objects\uart_bsp.d)
+I (uart_bsp.h)(0x693525C5)
+I (d:\CodeIDE\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5E8E2EB2)
