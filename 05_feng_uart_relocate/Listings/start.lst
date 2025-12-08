@@ -1,0 +1,247 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         
+    2 00000000                 PRESERVE8
+    3 00000000                 THUMB
+    4 00000000         
+    5 00000000         
+    6 00000000         ; Vector Table Mapped to Address 0 at Reset
+    7 00000000                 AREA             RESET, DATA, READONLY
+    8 00000000                 EXPORT           __Vectors
+    9 00000000         
+   10 00000000 00000000 
+                       __Vectors
+                               DCD              0           ; Top of Stack
+   11 00000004 08000009        DCD              0x08000009  ; Reset Handler
+   12 00000008         
+   13 00000008                 AREA             |.text|, CODE, READONLY
+   14 00000000         ; Reset handler
+   15 00000000         Reset_Handler
+                               PROC
+   16 00000000                 IMPORT           memcpy
+   17 00000000                 IMPORT           memset
+   18 00000000                 IMPORT           Mymain
+   19 00000000                 IMPORT           |Image$$RW_IRAM1$$Base|
+   20 00000000                 IMPORT           |Image$$RW_IRAM1$$Length|
+   21 00000000                 IMPORT           |Load$$RW_IRAM1$$Base|
+   22 00000000         
+   23 00000000                 IMPORT           |Image$$ER_IROM1$$Base|
+   24 00000000                 IMPORT           |Image$$ER_IROM1$$Length|
+   25 00000000                 IMPORT           |Load$$ER_IROM1$$Base|
+   26 00000000         
+   27 00000000                 IMPORT           |Image$$RW_IRAM1$$ZI$$Base|
+   28 00000000                 IMPORT           |Image$$RW_IRAM1$$ZI$$Length|
+   29 00000000                 IMPORT           memcpy
+   30 00000000         
+   31 00000000 F8DF D024       LDR              SP, =(0x20000000+0x10000)
+   32 00000004         
+   33 00000004         ; relocate data section
+   34 00000004 4809            LDR              R0, = |Image$$RW_IRAM1$$Base| 
+                                                            ; DEST
+   35 00000006 490A            LDR              R1, = |Load$$RW_IRAM1$$Base| 
+                                                            ; SORUCE
+   36 00000008 4A0A            LDR              R2, = |Image$$RW_IRAM1$$Length|
+ 
+                                                            ; LENGTH
+   37 0000000A F7FF FFFE       BL               memcpy
+   38 0000000E         
+   39 0000000E         ; relocate code section
+   40 0000000E 480A            LDR              R0, = |Image$$ER_IROM1$$Base| 
+                                                            ; DEST
+   41 00000010 490A            LDR              R1, = |Load$$ER_IROM1$$Base| 
+                                                            ; SORUCE
+   42 00000012 4A0B            LDR              R2, = |Image$$ER_IROM1$$Length|
+ 
+                                                            ; LENGTH
+   43 00000014 F7FF FFFE       BL               memcpy
+   44 00000018         
+   45 00000018 480A            LDR              R0, = |Image$$RW_IRAM1$$ZI$$Bas
+e| 
+                                                            ; DEST
+   46 0000001A F04F 0100       LDR              R1, = 0     ; len
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+   47 0000001E 4A0A            LDR              R2, = |Image$$RW_IRAM1$$ZI$$Len
+gth| 
+                                                            ; len
+   48 00000020 F7FF FFFE       BL               memset
+   49 00000024         ;BL    Mymain
+   50 00000024 4809            LDR              r0, =Mymain
+   51 00000026 4780            BLX              r0
+   52 00000028         
+   53 00000028                 ENDP
+   54 00000028         
+   55 00000028                 END
+              20010000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+              00000000 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
+ork --depend=.\objects\start.d -o.\objects\start.o -Id:\CodeIDE\Keil_v5\Keil\ST
+M32F1xx_DFP\2.3.0\Device\Include -Id:\CodeIDE\Keil_v5\ARM\CMSIS\Include --prede
+fine="__UVISION_VERSION SETA 533" --predefine="STM32F10X_HD SETA 1" --list=.\li
+stings\start.lst start.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RESET 00000000
+
+Symbol: RESET
+   Definitions
+      At line 7 in file start.s
+   Uses
+      None
+Comment: RESET unused
+__Vectors 00000000
+
+Symbol: __Vectors
+   Definitions
+      At line 10 in file start.s
+   Uses
+      At line 8 in file start.s
+Comment: __Vectors used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 13 in file start.s
+   Uses
+      None
+Comment: .text unused
+Reset_Handler 00000000
+
+Symbol: Reset_Handler
+   Definitions
+      At line 15 in file start.s
+   Uses
+      None
+Comment: Reset_Handler unused
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+Image$$ER_IROM1$$Base 00000000
+
+Symbol: Image$$ER_IROM1$$Base
+   Definitions
+      At line 23 in file start.s
+   Uses
+      At line 40 in file start.s
+Comment: Image$$ER_IROM1$$Base used once
+Image$$ER_IROM1$$Length 00000000
+
+Symbol: Image$$ER_IROM1$$Length
+   Definitions
+      At line 24 in file start.s
+   Uses
+      At line 42 in file start.s
+Comment: Image$$ER_IROM1$$Length used once
+Image$$RW_IRAM1$$Base 00000000
+
+Symbol: Image$$RW_IRAM1$$Base
+   Definitions
+      At line 19 in file start.s
+   Uses
+      At line 34 in file start.s
+Comment: Image$$RW_IRAM1$$Base used once
+Image$$RW_IRAM1$$Length 00000000
+
+Symbol: Image$$RW_IRAM1$$Length
+   Definitions
+      At line 20 in file start.s
+   Uses
+      At line 36 in file start.s
+Comment: Image$$RW_IRAM1$$Length used once
+Image$$RW_IRAM1$$ZI$$Base 00000000
+
+Symbol: Image$$RW_IRAM1$$ZI$$Base
+   Definitions
+      At line 27 in file start.s
+   Uses
+      At line 45 in file start.s
+Comment: Image$$RW_IRAM1$$ZI$$Base used once
+Image$$RW_IRAM1$$ZI$$Length 00000000
+
+Symbol: Image$$RW_IRAM1$$ZI$$Length
+   Definitions
+      At line 28 in file start.s
+   Uses
+      At line 47 in file start.s
+Comment: Image$$RW_IRAM1$$ZI$$Length used once
+Load$$ER_IROM1$$Base 00000000
+
+Symbol: Load$$ER_IROM1$$Base
+   Definitions
+      At line 25 in file start.s
+   Uses
+      At line 41 in file start.s
+Comment: Load$$ER_IROM1$$Base used once
+Load$$RW_IRAM1$$Base 00000000
+
+Symbol: Load$$RW_IRAM1$$Base
+
+
+
+ARM Macro Assembler    Page 2 Alphabetic symbol ordering
+External symbols
+
+   Definitions
+      At line 21 in file start.s
+   Uses
+      At line 35 in file start.s
+Comment: Load$$RW_IRAM1$$Base used once
+Mymain 00000000
+
+Symbol: Mymain
+   Definitions
+      At line 18 in file start.s
+   Uses
+      At line 50 in file start.s
+Comment: Mymain used once
+memcpy 00000000
+
+Symbol: memcpy
+   Definitions
+      At line 16 in file start.s
+      At line 29 in file start.s
+   Uses
+      At line 37 in file start.s
+      At line 43 in file start.s
+Warning: memcpy multiply defined
+memset 00000000
+
+Symbol: memset
+   Definitions
+      At line 17 in file start.s
+   Uses
+      At line 48 in file start.s
+Comment: memset used once
+11 symbols
+349 symbols in table
