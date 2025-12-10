@@ -1,0 +1,83 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: ¦ÌVision V5.33.0.0
+Copyright (C) 2020 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: 1 1, 1, LIC=VGXG8-3FAX9-BSBYX-HYH4B-UTX53-EV3MD
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Plus  Version: 5.33.0.0
+Toolchain Path:  d:\CodeIDE\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 7 (build 960)
+Assembler:       Armasm.exe V5.06 update 7 (build 960)
+Linker/Locator:  ArmLink.exe V5.06 update 7 (build 960)
+Library Manager: ArmAr.exe V5.06 update 7 (build 960)
+Hex Converter:   FromElf.exe V5.06 update 7 (build 960)
+CPU DLL:         SARMCM3.DLL V5.33.0.0
+Dialog DLL:      DCM.DLL V1.17.3.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.8.0
+Dialog DLL:      TCM.DLL V1.48.0.0
+ 
+<h2>Project:</h2>
+E:\workspace\stm_feng\STM32F103_Git\06_exception_irq\led_c.uvprojx
+Project File Date:  12/09/2025
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 7 (build 960)', folder: 'd:\CodeIDE\Keil_v5\ARM\ARMCC\Bin'
+Rebuild target 'led_c'
+compiling string.c...
+compiling led.c...
+compiling main.c...
+main.c(39): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "unsigned int"
+  	put_s_hex("g_Char's addr  = ", &g_Char);
+main.c(40): warning:  #167-D: argument of type "const char *" is incompatible with parameter of type "unsigned int"
+  	put_s_hex("g_Char2's addr = ", &g_Char2);
+main.c(55): warning:  #111-D: statement is unreachable
+  	return 0;
+main.c: 3 warnings, 0 errors
+assembling start.s...
+compiling init.c...
+init.c(59): warning:  #223-D: function "memcpy" declared implicitly
+  		memcpy(&Image$$ER_IROM1$$Base, &Load$$ER_IROM1$$Base, &Image$$ER_IROM1$$Length);
+init.c(63): warning:  #223-D: function "memcpy" declared implicitly
+  		memcpy(&Image$$RW_IRAM1$$Base, &Load$$RW_IRAM1$$Base, &Image$$RW_IRAM1$$Length);
+init.c(66): warning:  #223-D: function "memset" declared implicitly
+  	memset(&Image$$RW_IRAM1$$ZI$$Base, 0, &Image$$RW_IRAM1$$ZI$$Length);
+init.c: 3 warnings, 0 errors
+compiling exception.c...
+exception.h(271): warning:  #1-D: last line of file ends without a newline
+  #define SCB_BASE_ADDR  0xE000ED00
+exception.c: 1 warning, 0 errors
+compiling uart.c...
+compiling systick.c...
+exception.h(271): warning:  #1-D: last line of file ends without a newline
+  #define SCB_BASE_ADDR  0xE000ED00
+systick.c(35): warning:  #1-D: last line of file ends without a newline
+  }
+systick.c: 2 warnings, 0 errors
+linking...
+.\Objects\led_c.axf: Warning: L6305W: Image does not have an entry point. (Not specified or not set due to multiple choices.)
+Program Size: Code=1320 RO-data=68 RW-data=4 ZI-data=88  
+Finished: 0 information, 1 warning and 0 error messages.
+FromELF: creating hex file...
+After Build - User command #1: fromelf  --bin  --output=led.bin  Objects\led_c.axf
+After Build - User command #2: fromelf  --text  -a -c  --output=led.dis  Objects\led_c.axf
+".\Objects\led_c.axf" - 0 Error(s), 10 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: Keil
+                http://www.keil.com/pack/Keil.STM32F1xx_DFP.2.3.0.pack
+                Keil.STM32F1xx_DFP.2.3.0
+                STMicroelectronics STM32F1 Series Device Support, Drivers and Examples
+
+<h2>Collection of Component include folders:</h2>
+  d:\CodeIDE\Keil_v5\Keil\STM32F1xx_DFP\2.3.0\Device\Include
+
+<h2>Collection of Component Files used:</h2>
+Build Time Elapsed:  00:00:01
+</pre>
+</body>
+</html>
