@@ -26,7 +26,7 @@ void key_init(void)
 {
     AFIO_TypeDef *afio = (AFIO_TypeDef *)0x40010000;
     unsigned int *pRegA;
-    /* 初始化GPIO引脚PA0，设置为输入引脚 */
+    /* 使能 GPIO A 的时钟 */
 	pRegA = (unsigned int *)(0x40021000 + 0x18);
 	*pRegA |= (1 << 2);
  
